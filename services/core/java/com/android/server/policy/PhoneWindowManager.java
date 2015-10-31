@@ -714,7 +714,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     int mOverscanRight = 0;
     int mOverscanBottom = 0;
 
-<<<<<<< HEAD
     /**
      * Hardware keys configs.
      * @author Carlo Savignano
@@ -760,10 +759,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
      * Software keys configs.
      * @author Carlo Savignano
      */
-=======
-    /** Custom system-wide flags deciding what features get enabled. */
-    private int mSystemDesignFlags = 0;
->>>>>>> 66c7d19... base: Implement Immersive mode (nougat-caf)
 
     // What we do when the user long presses on home
     private int mLongPressOnHomeBehavior;
@@ -798,6 +793,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     private boolean mScreenshotChordVolumeUpKeyTriggered;
     private boolean mScreenshotChordPowerKeyTriggered;
     private long mScreenshotChordPowerKeyTime;
+
+    /** Custom system-wide flags deciding what features get enabled. */
+    private int mSystemDesignFlags = 0;
 
     /* The number of steps between min and max brightness */
     private static final int BRIGHTNESS_STEPS = 10;
@@ -964,7 +962,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             resolver.registerContentObserver(Settings.Secure.getUriFor(
                     Settings.System.USE_EDGE_SERVICE_FOR_GESTURES), false, this,
                     UserHandle.USER_ALL);
-<<<<<<< HEAD
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.NAVIGATION_BAR_ENABLED), false, this,
                     UserHandle.USER_ALL);
@@ -1006,10 +1003,9 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.ALERT_SLIDER_ORDER), false, this,
-=======
+                    UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.Secure.getUriFor(
                     Settings.Secure.SYSTEM_DESIGN_FLAGS), false, this,
->>>>>>> 66c7d19... base: Implement Immersive mode (nougat-caf)
                     UserHandle.USER_ALL);
             updateSettings();
         }
@@ -1601,7 +1597,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             mGlobalActions = new GlobalActions(mContext, mWindowManagerFuncs);
         }
         final boolean keyguardShowing = isKeyguardShowingAndNotOccluded();
-        mGlobalActions.showDialog(keyguardShowing, isDeviceProvisioned());
+        mGlobalActions.showDialog(keyguardShowing, isKeyguardSecure(mCurrentUserId), isDeviceProvisioned());
         if (keyguardShowing) {
             // since it took two seconds of long press to bring this up,
             // poke the wake lock so they have some time to see the dialog.
@@ -2986,11 +2982,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     @Override
     public int getNonDecorDisplayWidth(int fullWidth, int fullHeight, int rotation,
             int uiMode) {
-<<<<<<< HEAD
-        if (hasNavigationBar()) {
-=======
         if (mHasNavigationBar && shouldNavigationBarOccupySpace()) {
->>>>>>> 66c7d19... base: Implement Immersive mode (nougat-caf)
             // For a basic navigation bar, when we are in landscape mode we place
             // the navigation bar to the side.
             if (mNavigationBarCanMove && fullWidth > fullHeight) {
@@ -3011,11 +3003,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     @Override
     public int getNonDecorDisplayHeight(int fullWidth, int fullHeight, int rotation,
             int uiMode) {
-<<<<<<< HEAD
-        if (hasNavigationBar()) {
-=======
         if (mHasNavigationBar && shouldNavigationBarOccupySpace()) {
->>>>>>> 66c7d19... base: Implement Immersive mode (nougat-caf)
             // For a basic navigation bar, when we are in portrait mode we place
             // the navigation bar to the bottom.
             if (!mNavigationBarCanMove || fullWidth < fullHeight) {
