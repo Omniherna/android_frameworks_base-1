@@ -281,8 +281,6 @@ public final class InputDevice implements Parcelable {
     public static final int SOURCE_HDMI = 0x02000000 | SOURCE_CLASS_BUTTON;
 
     /**
-<<<<<<< HEAD
-=======
      * The input source is a specific virtual event sent from navigation bar.
      *
      * @see com.android.systemui.statusbar.policy.KeyButtonView#sendEvent()
@@ -301,7 +299,6 @@ public final class InputDevice implements Parcelable {
     public static final int SOURCE_CUSTOM = 0x08000000 | SOURCE_CLASS_BUTTON;
 
     /**
->>>>>>> 89050b2... base: Introduce custom policy for hardware keys
      * A special input source constant that is used when filtering input devices
      * to match devices that provide any type of input source.
      */
