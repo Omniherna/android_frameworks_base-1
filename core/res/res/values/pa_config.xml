@@ -226,5 +226,4 @@
   <!-- Default button brightness setting.
        Must be in the range specified by minimum and maximum. -->
   <integer name="config_buttonBrightnessSettingDefault">255</integer>
-
 </resources>
